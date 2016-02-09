@@ -2,24 +2,27 @@
 using System.Collections;
 using System.Text;
 
-public class PlayerCharacter : MonoBehaviour {
+public class PlayerCharacter : MonoBehaviour
+{
 
     private int _health;
     private Camera cameraHold;
     private Vector3 position;
     private Vector3 screenPointPosition;
 
-	void Start() {
-		_health = 1;
+    void Start()
+    {
+        _health = 1;
         cameraHold = Camera.main;
         screenPointPosition = cameraHold.WorldToScreenPoint(position);
-	}
+    }
 
-	public void Hurt(int damage) {
-		_health -= damage;
+    public void Hurt(int damage)
+    {
+        _health -= damage;
         Utility.HealthString = GetHealthString();
-		Debug.Log("Health: " + _health);
-	}
+        Debug.Log("Health: " + _health);
+    }
 
     private string GetHealthString()
     {
@@ -41,6 +44,7 @@ public class PlayerCharacter : MonoBehaviour {
         else
         {
             builder.Append("You have died!");
+            Utility.IsDead = true;
         }
 
         return builder.ToString();
@@ -52,13 +56,27 @@ public class PlayerCharacter : MonoBehaviour {
         GUI.contentColor = Color.black;
 
 
-            GUI.Label(new Rect(screenPX.x, screenPointPosition.y, 100, 50), Utility.HealthString);
-        
+        GUI.Label(new Rect(screenPX.x, screenPointPosition.y, 100, 50), Utility.HealthString);
+
     }
 
     public void Update()
     {
-        screenPointPosition.y += 1;
-        screenPointPosition.x += 1;
+        if (screenPointPosition.y > Screen.height)
+        {
+            screenPointPosition.y -= 1;
+        }
+        if (screenPointPosition.y < -Screen.height)
+        {
+            screenPointPosition.y += 1;
+        }
+        if (screenPointPosition.x > Screen.width)
+        {
+            screenPointPosition.x -= 1;
+        }
+        if (screenPointPosition.x < -Screen.width)
+        {
+            screenPointPosition.x += 1;
+        }
     }
 }
