@@ -6,7 +6,7 @@ public static class Utility {
     private static int _targetEnemy = 1;
     private static int _numEnemy = 0;
     private static string _healthString = "Healthbar \n 5:*****";
-    private static bool _isDead = true;
+    private static bool _isDead = false;
     private static bool _xDown = true;
     private static bool _yDown = true;
 
