@@ -12,7 +12,7 @@ public class PlayerCharacter : MonoBehaviour
 
     void Start()
     {
-        _health = 1;
+        _health = 5;
         cameraHold = Camera.main;
         screenPointPosition = cameraHold.WorldToScreenPoint(position);
     }

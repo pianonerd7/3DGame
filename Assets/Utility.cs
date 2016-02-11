@@ -75,7 +75,7 @@ public static class Utility {
 
     public static void AddTargetEnemy()
     {
-        _targetEnemy = _targetEnemy + 30;
+        _targetEnemy = _targetEnemy + 2;
     }
 
     public static void AddNumEnemy()
