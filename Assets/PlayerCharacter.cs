@@ -52,31 +52,49 @@ public class PlayerCharacter : MonoBehaviour
 
     public void OnGUI()
     {
-        var screenPX = cameraHold.WorldToScreenPoint(position);
         GUI.contentColor = Color.black;
 
 
-        GUI.Label(new Rect(screenPX.x, screenPointPosition.y, 100, 50), Utility.HealthString);
-
+        //GUI.Label(new Rect(screenPointPosition.x, screenPointPosition.y, 100, 50), Utility.HealthString);
+        GUI.Label(new Rect(100, 0, 200, 200), Utility.HealthString);
     }
 
     public void Update()
     {
+        Debug.Log("h: " + Screen.height + "W: " + Screen.width);
         if (screenPointPosition.y > Screen.height)
         {
-            screenPointPosition.y -= 1;
+            Utility.YDown = true;
         }
-        if (screenPointPosition.y < -Screen.height)
+        if (screenPointPosition.y < 0)
         {
-            screenPointPosition.y += 1;
+            Utility.YDown = false;
         }
         if (screenPointPosition.x > Screen.width)
         {
+            Utility.XDown = true;
+        }
+        if (screenPointPosition.x < 0)
+        {
+            Utility.XDown = false;
+        }
+
+        if (Utility.XDown)
+        {
             screenPointPosition.x -= 1;
         }
-        if (screenPointPosition.x < -Screen.width)
+        else 
         {
             screenPointPosition.x += 1;
+        }
+
+        if (Utility.YDown)
+        {
+            screenPointPosition.y -= 1;
+        }
+        else
+        {
+            screenPointPosition.y += 1;
         }
     }
 }

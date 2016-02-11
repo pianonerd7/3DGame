@@ -7,6 +7,8 @@ public static class Utility {
     private static int _numEnemy = 0;
     private static string _healthString = "Healthbar \n 5:*****";
     private static bool _isDead = true;
+    private static bool _xDown = true;
+    private static bool _yDown = true;
 
     public static int TargetEnemy
     {
@@ -44,6 +46,30 @@ public static class Utility {
         set
         {
             _isDead = value;
+        }
+    }
+
+    public static bool XDown
+    {
+        get
+        {
+            return _xDown;
+        }
+        set
+        {
+            _xDown = value;
+        }
+    }
+
+    public static bool YDown
+    {
+        get
+        {
+            return _yDown;
+        }
+        set
+        {
+            _yDown = value;
         }
     }
 
