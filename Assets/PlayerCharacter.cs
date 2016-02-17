@@ -95,5 +95,10 @@ public class PlayerCharacter : MonoBehaviour
                 screenPointPosition.y += 1;
             }
         }
+        else
+        {
+            screenPointPosition.x = Screen.width - 100;
+            screenPointPosition.y = 0;
+        }
     }
 }
